@@ -1,6 +1,7 @@
 const SUPABASE_URL = "https://vwisvluidouhawxprsqu.supabase.co";
 const SUPABASE_KEY = "sb_publishable_OkUXoo7MZLoDgDwThRwJig_kK8qqehi";
 
+
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const eventsList = document.getElementById("events-list");
@@ -73,9 +74,13 @@ function togglePanel(eventId, statusKey) {
   ];
 
   const target = document.getElementById(`panel-${eventId}-${statusKey}`);
+  if (!target) return;
+
   const isHidden = target.classList.contains("hidden");
 
-  panels.forEach(panel => panel.classList.add("hidden"));
+  panels.forEach(panel => {
+    if (panel) panel.classList.add("hidden");
+  });
 
   if (isHidden) {
     target.classList.remove("hidden");
@@ -129,12 +134,12 @@ async function loadEvents() {
       .order("name", { ascending: true });
 
     if (responsesError) {
-      console.error(responsesError);
+      console.error("Napaka pri nalaganju prijav:", responsesError);
     }
 
     const allResponses = responses || [];
-    const prideList = allResponses.filter(r => r.status === "pridem");
-    const nePrideList = allResponses.filter(r => r.status === "ne pridem");
+    const pridemList = allResponses.filter(r => r.status === "pridem");
+    const nePridemList = allResponses.filter(r => r.status === "ne pridem");
     const mogoceList = allResponses.filter(r => r.status === "mogoce");
 
     const memberOptions = members.map(member => {
@@ -163,24 +168,25 @@ async function loadEvents() {
       <h2>${escapeHtml(event.title)}</h2>
       <div class="meta">
         <strong>Začetek:</strong> ${formatDateTime(event.start_at)}<br>
-        <strong>Konec:</strong> ${formatDateTime(event.end_at)}
+        <strong>Konec:</strong> ${formatDateTime(event.end_at)}<br>
+        <strong>Kraj:</strong> ${escapeHtml(event.location || "Ni določen")}
       </div>
       <div class="description">${escapeHtml(event.description || "")}</div>
 
       <div class="counts">
         <button class="count-button" onclick="togglePanel(${event.id}, 'pridem')">
-          Pride: <strong>${prideList.length}</strong>
+          Pridem: <strong>${pridemList.length}</strong>
         </button>
         <button class="count-button" onclick="togglePanel(${event.id}, 'nepridem')">
-          Ne pride: <strong>${nePrideList.length}</strong>
+          Ne pridem: <strong>${nePridemList.length}</strong>
         </button>
         <button class="count-button" onclick="togglePanel(${event.id}, 'mogoce')">
           Mogoče: <strong>${mogoceList.length}</strong>
         </button>
       </div>
 
-      ${buildStatusPanel(event.id, "pridem", "Pride", prideList)}
-      ${buildStatusPanel(event.id, "nepridem", "Ne pride", nePrideList)}
+      ${buildStatusPanel(event.id, "pridem", "Pridem", pridemList)}
+      ${buildStatusPanel(event.id, "nepridem", "Ne pridem", nePridemList)}
       ${buildStatusPanel(event.id, "mogoce", "Mogoče", mogoceList)}
 
       <div class="form-row">
@@ -239,7 +245,7 @@ async function submitResponse(eventId) {
     );
 
   if (error) {
-    console.error(error);
+    console.error("Napaka pri shranjevanju:", error);
     message.style.color = "red";
     message.textContent = "Napaka pri shranjevanju.";
     return;
@@ -248,6 +254,7 @@ async function submitResponse(eventId) {
   message.style.color = "green";
   message.textContent = "Odgovor je shranjen.";
 
+  nameInput.value = "";
   noteInput.value = "";
 
   await loadEvents();
