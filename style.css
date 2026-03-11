@@ -286,20 +286,19 @@ button.submit-btn:hover {
     display: inline-block;
   }
 
-  .left-sidebar {
-    display: none;
-    position: static;
-  }
-
-  .left-sidebar.open {
-    display: block;
-  }
-
+  .left-sidebar,
   .right-sidebar {
     display: none;
-    position: static;
+    position: fixed;
+    top: 90px;
+    left: 16px;
+    right: 16px;
+    z-index: 1000;
+    max-height: 70vh;
+    overflow-y: auto;
   }
 
+  .left-sidebar.open,
   .right-sidebar.open {
     display: block;
   }
