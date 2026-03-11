@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -12,24 +16,100 @@ body {
 .hero {
   background: linear-gradient(135deg, #7b1e1e, #c9a15d);
   color: white;
-  padding: 60px 20px;
+  padding: 20px 20px 50px 20px;
+}
+
+.hero-top {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.menu-toggle {
+  display: none;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.hero-content {
   text-align: center;
 }
 
 .hero-content h1 {
   margin: 0 0 10px 0;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
 }
 
 .hero-content p {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 30px auto;
+.page-layout {
+  max-width: 1400px;
+  margin: 28px auto;
   padding: 0 16px;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.sidebar {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 16px;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+
+.events-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.event-link {
+  display: block;
+  text-decoration: none;
+  color: #2b2b2b;
+  background: #f3eee8;
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: 0.2s ease;
+  line-height: 1.4;
+}
+
+.event-link:hover {
+  background: #eadfd4;
+}
+
+.event-link-title {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.event-link-date {
+  display: block;
+  font-size: 0.92rem;
+  color: #6d6259;
+}
+
+.content {
+  min-width: 0;
 }
 
 .event-card {
@@ -42,16 +122,19 @@ body {
 
 .event-card h2 {
   margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 2rem;
 }
 
 .meta {
   color: #666;
-  margin-bottom: 12px;
-  line-height: 1.6;
+  margin-bottom: 14px;
+  line-height: 1.7;
 }
 
 .description {
   margin-bottom: 18px;
+  font-size: 1.05rem;
 }
 
 .counts {
@@ -61,15 +144,56 @@ body {
   margin-bottom: 18px;
 }
 
-.count-box {
+.count-button {
   background: #f3eee8;
+  border: none;
   padding: 10px 14px;
   border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
-.responses-list {
-  margin: 16px 0;
-  padding-left: 18px;
+.count-button:hover {
+  background: #eadfd4;
+}
+
+.hidden {
+  display: none;
+}
+
+.status-panel {
+  background: #faf7f3;
+  border: 1px solid #eee4d8;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.status-panel h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.people-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.people-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ece3d9;
+}
+
+.people-list li:last-child {
+  border-bottom: none;
+}
+
+.person-note {
+  display: block;
+  margin-top: 4px;
+  color: #6a5b4f;
+  font-size: 0.95rem;
 }
 
 .form-row {
@@ -79,28 +203,74 @@ body {
   margin-top: 16px;
 }
 
-input,
 select,
 textarea,
 button {
-  padding: 10px 12px;
+  padding: 12px 14px;
   font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #ccc;
 }
 
-button {
-  background: #7b1e1e;
+button.submit-btn {
+  background: #8f1d1d;
   color: white;
   border: none;
   cursor: pointer;
 }
 
-button:hover {
+button.submit-btn:hover {
   opacity: 0.92;
 }
 
 .message {
-  margin-top: 10px;
+  margin-top: 6px;
   font-size: 0.95rem;
+}
+
+.no-events {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 900px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .sidebar {
+    display: none;
+    position: static;
+  }
+
+  .sidebar.open {
+    display: block;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .event-card {
+    padding: 18px;
+  }
+
+  .event-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .counts {
+    flex-direction: column;
+  }
+
+  .count-button {
+    width: 100%;
+    text-align: left;
+  }
 }

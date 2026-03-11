@@ -8,14 +8,24 @@
 </head>
 <body>
   <header class="hero">
+    <div class="hero-top">
+      <button id="menu-toggle" class="menu-toggle">☰ Dogodki</button>
+    </div>
     <div class="hero-content">
       <h1>Folklorni dogodki</h1>
       <p>Pregled dogodkov in prijave članov</p>
     </div>
   </header>
 
-  <main class="container">
-    <section id="events-list"></section>
+  <main class="page-layout">
+    <aside id="sidebar" class="sidebar">
+      <h2>Dogodki</h2>
+      <nav id="events-nav" class="events-nav"></nav>
+    </aside>
+
+    <section class="content">
+      <div id="events-list"></div>
+    </section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
