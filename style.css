@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f3ee;
+  color: #2b2b2b;
+}
+
+.hero {
+  background: linear-gradient(135deg, #7b1e1e, #c9a15d);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5rem;
+}
+
+.hero-content p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 16px;
+}
+
+.event-card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.event-card h2 {
+  margin-top: 0;
+}
+
+.meta {
+  color: #666;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.description {
+  margin-bottom: 18px;
+}
+
+.counts {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.count-box {
+  background: #f3eee8;
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+.responses-list {
+  margin: 16px 0;
+  padding-left: 18px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+input,
+select,
+textarea,
+button {
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #7b1e1e;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.92;
+}
+
+.message {
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
