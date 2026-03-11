@@ -7,10 +7,18 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const eventsList = document.getElementById("events-list");
 const eventsNav = document.getElementById("events-nav");
 const sidebar = document.getElementById("sidebar");
+const dutySidebar = document.getElementById("duty-sidebar");
 const menuToggle = document.getElementById("menu-toggle");
+const dutyToggle = document.getElementById("duty-toggle");
 
 menuToggle.addEventListener("click", () => {
   sidebar.classList.toggle("open");
+  dutySidebar.classList.remove("open");
+});
+
+dutyToggle.addEventListener("click", () => {
+  dutySidebar.classList.toggle("open");
+  sidebar.classList.remove("open");
 });
 
 function formatDateTime(dateString) {
@@ -156,6 +164,7 @@ async function loadEvents() {
     navLink.addEventListener("click", () => {
       if (window.innerWidth <= 900) {
         sidebar.classList.remove("open");
+        dutySidebar.classList.remove("open");
       }
     });
     eventsNav.appendChild(navLink);
