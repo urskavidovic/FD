@@ -14,7 +14,12 @@ body {
 }
 
 .hero {
-  background: linear-gradient(135deg, #7b1e1e, #c9a15d);
+  background-image:
+    linear-gradient(rgba(80, 20, 20, 0.55), rgba(120, 80, 30, 0.45)),
+    url("slika.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   padding: 20px 20px 50px 20px;
 }
