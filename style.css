@@ -27,7 +27,9 @@ body {
 .hero-top {
   display: flex;
   justify-content: flex-start;
+  gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .menu-toggle {
@@ -70,6 +72,10 @@ body {
   border-radius: 18px;
   padding: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.left-sidebar,
+.right-sidebar {
   position: sticky;
   top: 16px;
 }
@@ -240,6 +246,37 @@ button.submit-btn:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
+.duty-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.duty-item {
+  background: #f3eee8;
+  border-radius: 12px;
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+
+.duty-item strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.duty-item span {
+  color: #6d6259;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 901px) {
+  .hero {
+    min-height: 420px;
+    background-position: center 18%;
+    padding: 40px 20px 80px 20px;
+  }
+}
+
 @media (max-width: 900px) {
   .page-layout {
     grid-template-columns: 1fr;
@@ -259,7 +296,12 @@ button.submit-btn:hover {
   }
 
   .right-sidebar {
+    display: none;
     position: static;
+  }
+
+  .right-sidebar.open {
+    display: block;
   }
 
   .hero-content h1 {
@@ -282,62 +324,4 @@ button.submit-btn:hover {
     width: 100%;
     text-align: left;
   }
-}
-
-.sidebar-section + .sidebar-section {
-  margin-top: 28px;
-  padding-top: 20px;
-  border-top: 1px solid #ece3d9;
-}
-
-.duty-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.duty-item {
-  background: #f3eee8;
-  border-radius: 12px;
-  padding: 12px 14px;
-  line-height: 1.5;
-}
-
-.duty-item strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.duty-item span {
-  color: #6d6259;
-  font-size: 0.95rem;
-}
-
-.left-sidebar,
-.right-sidebar {
-  position: sticky;
-  top: 16px;
-}
-
-.duty-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.duty-item {
-  background: #f3eee8;
-  border-radius: 12px;
-  padding: 12px 14px;
-  line-height: 1.5;
-}
-
-.duty-item strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.duty-item span {
-  color: #6d6259;
-  font-size: 0.95rem;
 }
