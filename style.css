@@ -56,11 +56,11 @@ body {
 }
 
 .page-layout {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 28px auto;
   padding: 0 16px;
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: 260px minmax(0, 1fr) 240px;
   gap: 24px;
   align-items: start;
 }
@@ -249,13 +249,17 @@ button.submit-btn:hover {
     display: inline-block;
   }
 
-  .sidebar {
+  .left-sidebar {
     display: none;
     position: static;
   }
 
-  .sidebar.open {
+  .left-sidebar.open {
     display: block;
+  }
+
+  .right-sidebar {
+    position: static;
   }
 
   .hero-content h1 {
@@ -284,6 +288,35 @@ button.submit-btn:hover {
   margin-top: 28px;
   padding-top: 20px;
   border-top: 1px solid #ece3d9;
+}
+
+.duty-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.duty-item {
+  background: #f3eee8;
+  border-radius: 12px;
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+
+.duty-item strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.duty-item span {
+  color: #6d6259;
+  font-size: 0.95rem;
+}
+
+.left-sidebar,
+.right-sidebar {
+  position: sticky;
+  top: 16px;
 }
 
 .duty-list {
