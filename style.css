@@ -279,3 +279,32 @@ button.submit-btn:hover {
     text-align: left;
   }
 }
+
+.sidebar-section + .sidebar-section {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #ece3d9;
+}
+
+.duty-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.duty-item {
+  background: #f3eee8;
+  border-radius: 12px;
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+
+.duty-item strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.duty-item span {
+  color: #6d6259;
+  font-size: 0.95rem;
+}
